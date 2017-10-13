@@ -1,0 +1,372 @@
+//will import _style.scss
+$cardsGreen: rgb(245,255,223);
+$backgroundColor: #fafafa;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  h2, h3, p, h4, h5, h6{
+    font-family: 'Raleway', sans-serif;
+    color: #727475;
+    h4 {
+      font-size: 18px;
+    }
+  }
+
+header {
+  font-family: 'Lobster', cursive;
+  font-size: 140%;
+  text-shadow: 2px 2px 2px #aaa;
+  color: white;
+  padding-right:50px;
+}
+
+header, #navi {
+  padding-left: 180px;
+}
+
+#card {
+  float: left;
+}
+
+#head {
+  box-shadow: 2px 2px 2px #aaa;
+  position: relative;
+  background-color: #b3d01d;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+#menu{
+  position: relative;
+  top: -55px;
+  left: 36px;
+}
+
+.menu{
+  font-size: 44px;
+  color: white;
+}
+
+.infoStuff{
+  background-color: $cardsGreen;
+  opacity: .67;
+}
+.yo{
+  margin-bottom: 0;
+}
+
+#search-stuff{
+  padding-top: 50px;
+  padding-bottom:30px;
+}
+
+.page-footer{
+   background-color: #b3d01d;
+}
+
+#footName{
+  font-family: 'Lobster', cursive;
+  text-shadow: 2px 2px 2px #aaa;
+  color: white;
+}
+.git-hub{
+  margin-top: 26px;
+}
+// #search-stuff{
+//     padding-bottom: 200px;
+//   }
+/*profile css ------------------*/
+
+.headMarg{
+margin-bottom: 40px;
+clear: both;
+position: relative;
+background-color: #b3d01d;
+}
+
+#navi{
+  // background-color: #b3d01d;
+  padding-right: 10px;
+}
+
+#searchNav{
+  width:80%;
+}
+
+#userPhoto{
+  width: 100%;
+  height: 210px;
+}
+
+#imageCard{
+  width: 100%;
+  height: 300px;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  z-index: 2;
+  background-color: $cardsGreen;
+}
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #5b8b77;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+  opacity: .9;
+}
+
+.text {
+  white-space: nowrap;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+#profDivs{
+  padding-bottom: 200px;
+}
+
+#userWelcome{
+ padding-left: 50px;
+ text-shadow: 2px 2px 2px #aaa;
+ margin:0;
+}
+
+#listOfItems, #stuffUwant {
+  background-color: $backgroundColor;
+  padding-right: 30px;
+  padding-left: 30px;
+  z-index:1;
+}
+
+#pendingSwaps{
+  background-color: $backgroundColor;
+  padding-right: 30px;
+  padding-left: 30px;
+  z-index:1;
+}
+
+#pendStuff{
+  background-color: $cardsGreen;
+  opacity: 0.75;
+}
+#pendingYouImg, #pendingThemImg{
+  height:100px;
+}
+#pendingYouImg{
+  float: right;
+}
+
+#addListing{
+  margin-top: 0;
+
+}
+
+#bidImage{
+  height: 50px;
+  padding: 0;
+}
+
+.bidCol{
+  margin-bottom:10px;
+  margin-top: 15px;
+}
+
+#changeProfile{
+  box-shadow: 2px 2px 2px 2px #aaa;
+  background-color: white;
+  padding: 100px;
+  margin-bottom: 20px
+}
+
+#frUploader{
+  margin-bottom: 20px;
+}
+
+#frmUploader,
+#deleteAcct {
+  margin-top: 10px;
+}
+
+.filebtnStyle{
+  padding-top:0;
+}
+
+#homePageFirstName{
+  left: -15px;
+  bottom: 15px;
+  padding: 10px;
+  height:auto;
+  width: 55%;
+  opacity: .9;
+  background-color: #159957;
+}
+
+
+.darkText{
+  color: #3d673c;
+}
+/*communication css ------------------*/
+
+.swap{
+  margin: 0;
+  text-shadow: 2px 2px 2px #aaa;
+}
+.swapDiv{
+  margin: 0;
+}
+
+#communicateChat {
+margin: 30px 0;
+}
+
+#maps{
+  position: relative;
+  left: 25%;
+}
+
+.com{
+  left: -15px;
+  padding: 10px;
+  height:auto;
+  width: 65%;
+  opacity: .9;
+}
+#comDiv, #profDivs{
+  padding-bottom: 200px;
+}
+
+.imageCardYou, .imageCardThem{
+  width: 50%;
+  height: 200px;
+}
+.it {
+  height: 240px;
+}
+#otherItemC, #yourItemC{
+  height:240px;
+}
+
+#deleteItem {
+  color: red;
+  float: left;
+  margin-left: 35px;
+}
+#nameOfCard, #nameofItem{
+  overflow-x: hidden;
+}
+/*media queries ------------------*/
+
+@media only screen and (max-width : 1200px) {
+  #imageCardYou, #imageCardThem{
+    width: 50%
+  }
+  /* swap image card*/
+  .it {
+    height: 150px;
+  }
+  #otherItemC, #yourItemC{
+    height:150px;
+  }
+  /* listing card*/
+  #imageCard{
+    height:240px;
+  }
+  #userPhoto{
+    height: 140px;
+  }
+}
+
+@media only screen and (max-width : 993px) {
+  $bottPad: 30px;
+  $convWidth: 205%;
+  header, .main, footer {
+    padding-left: 0;
+  }
+  #imageCardYou, #imageCardThem{
+    width: 50%;
+  }
+  #otherItemC, #yourItemC{
+    height:240px;
+  }
+  .it {
+    height: 240px;
+  }
+  /* listing card*/
+  #imageCard{
+    height:320px;
+  }
+  #userPhoto{
+    height: 235px;
+  }
+  #ConvosWrite{
+    width:$convWidth;
+    margin-top: 6px;
+  }
+  #Convos, #ConvosWrite {
+    width:$convWidth;
+  }
+
+  #homePageFirstName{
+    font-size: 20px
+  }
+}
+@media only screen and (max-width : 745px) {
+  #userWelcome{
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width : 600px) {
+  /* listing card*/
+  #imageCard{
+    width: 75%;
+    height: auto;
+    margin-left: 12%;
+  }
+  #userPhoto{
+    width: 100%;
+  }
+  #imageCardYou, #imageCardThem{
+    width: 50%;
+  }
+  #otherItemC, #yourItemC{
+    height:240px;
+  }
+  .it {
+    height: 240px;
+  }
+}
+@media only screen and (max-width : 560px) {
+  #userWelcome{
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width : 440px) {
+  #imageCard{
+    width: 100%;
+    height: auto;
+    margin-left:auto;
+  }
+}

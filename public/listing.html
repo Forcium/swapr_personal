@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>swapr</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <!-- Meterialize icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Meterialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Scss compiled css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <style>
+  body {
+    background-image: url('/assets/images/giftly.png');
+  }
+  </style>
+</head>
+
+<body>
+  <!-- swal alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- navbar header -->
+  <div class="" id="">
+    <nav>
+      <div class="nav-wrapper grad1 main" id="navi">
+        <a href="/" class="brand-logo right">
+          <header>Swapr</header>
+        </a>
+        <form class="topInputBar">
+          <div class="input-field right-align hide-on-med-and-down" id="searchNav">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons center">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <!--navbutton-->
+    <a href="#" data-activates="slide-out" class="button-collapse" id="menu"><i class="material-icons menu">menu</i></a>
+    <!--NAVBAR -->
+    <ul id="slide-out" class="side-nav">
+      <div class="user-view">
+        <div class="background grad1">
+        </div>
+        <img id="avatarImg" class="circle" src="">
+        <span class="white-text name"></span>
+        <span class="white-text email"></span>
+      </div>
+      <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+      <li><a class="waves-effect" href="/profile"><i class="material-icons">face</i>Your Profile</a></li>
+      <li><a class="waves-effect" id="exit"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    </ul>
+
+    <!-- edit listing modole -->
+    <div id="modalEdit" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <div class="container">
+          <h4>Edit Listing</h4>
+          <form class="listing" enctype="multipart/form-data" id="editListing" name="editListing" action="/api/editItem/" method="POST">
+
+            <!-- new listing info input -->
+            <div class="input-field col s12" id="newItem">
+              <input name="itemName" placeholder="Item Name" id="itemName" type="text" class="validate">
+              <label for="itemName"></label>
+              </input>
+            </div>
+
+
+            <!-- category -->
+            <div class="input-field col s12">
+              <select id="editpurpose" name="itemCategory">
+                <option value="" disabled selected>Category</option>
+                <option value="Elect">Electronics</option>
+                <option value="Fash">Fashion</option>
+                <option value="HG">Home & Garden</option>
+                <option value="Music">Musical Instrument</option>
+                <option value="SG">Sporting Goods</option>
+                <option value="TH">Toys & Hobbies</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+
+            <!-- item description -->
+            <div class="input-field col s12">
+              <textarea name="itemDescription" id="itemDescription" class="materialize-textarea"></textarea>
+              <label for="textarea1">Item Description</label>
+            </div>
+            <!--  <div class="input-field row col s12">
+            <input type="file" name="imgUploader" multiple />
+            <input type="submit" name="submit" id="btnSubmit" value="Upload" />
+
+          </div>-->
+            <input type="hidden" name="hdnId" id="hdnId" value=""></input>
+            <div class="file-field input-field">
+              <div class="btn light-green">
+                <span>File</span>
+                <input name="itemUpdate" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload Images">
+              </div>
+            </div>
+            <div class="file-field input-field">
+              <div class="btn light-green">
+                <span>File</span>
+                <input name="itemUpdate" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload Images">
+              </div>
+            </div>
+            <div class="file-field input-field">
+              <div class="btn light-green">
+                <span>File</span>
+                <input name="itemUpdate" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload Images">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" value="Update" form="editListing" class="modal-action modal-close waves-effect waves-green btn-flat " id="btnSubmit">Submit</button>
+
+          <button type="submit" value="Delete" class="modal-action modal-close waves-effect waves-light btn-flat " id="deleteItem">DELETE ITEM</button>
+      </div>
+    </div>
+
+    <!-- end of edit listing -->
+    <!-- Item Header -->
+    <div class="container main" id ="caroDiv">
+      <div class="card-panel lighten-5 z-depth-1 grey lighten-5">
+        <div class="row valign-wrapper">
+          <div class="col s12 m12" id="itemTitle">
+            <h2 class="nameText"></h2>
+          </div>
+        </div>
+        <div class=row>
+          <div class="col l3 buyerBtn center">
+          </div>
+          <div class="col l6 buyerBtn center">
+            <div class="input-field">
+              <select class="icons" id="selectDropdown">
+                <option value="" disabled selected>Choose a Listing</option>
+                <!--  <option value="" data-icon="" class="left circle optSwap"></option> -->
+              </select>
+            </div>
+          </div>
+          <div class="col l3 buyerBtn center">
+          </div>
+          <div class="col l12 buyerBtnSubmit center">
+            <a class="waves-effect waves-light btn pulse light-green swapBtn">Swap</a>
+          </div>
+
+          <div class="col s12 m12 l12 sellerBtn">
+            <a class="btn-floating btn waves-effect waves-light grad1 modal-trigger right" id="editListing" data-target="modalEdit"><i class="material-icons">edit</i></a>
+          </div>
+          <!-- <div class="col l2 unFlagSeller">
+            <a class="waves-effect waves-light btn pulse green unFlagBtn">Unflag Item</a>
+          </div> -->
+        </div>
+      </div>
+      <div id="transDecision">
+      </div>
+      <!-- Carousel  -->
+      <div class="carousel row" id="main">
+        <div class="card hoverable carousel-item" id="carouselIMG">
+          <div class="card-image">
+            <img class="materialboxed" id="carousel1" src="">
+          </div>
+        </div>
+        <div class="card hoverable carousel-item" id="carouselIMG2">
+          <div class="card-image">
+            <img class="materialboxed" id="carousel2" src="">
+          </div>
+        </div>
+        <div class="card hoverable carousel-item" id="carouselIMG3">
+          <div class="card-image">
+            <img class="materialboxed" id="carousel3" src="">
+          </div>
+        </div>
+      </div>
+      <!-- End of Carousel -->
+      <div id="itemDescription">
+        <div class="card-panel lighten-5 z-depth-1 ">
+          <div class="row valign-wrapper">
+            <div class="col s10">
+              <h6 class="darkText"></h6>
+            </div>
+          <div class="col s2 flagSeller">
+            <a class ="btn-floating btn-medium waves-effect waves-light red"><i class="flagBtn material-icons medium">flag</i></a>
+
+           <!-- <div class="col l2 flagSeller">
+             <a class="waves-effect waves-light btn pulse red flagBtn">Flag Item</a>
+           </div> -->
+         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row container" id="itemDescription">
+  <div class="col s4 m12">
+  leaving the state.
+  </div>
+</div> -->
+    <!-- footer with contributors info -->
+    <footer class="page-footer hide-on-small-only grad1">
+      <div class="container hide-on-med-and-down">
+        <div class="row">
+          <div class="col l6 s12">
+            <h4 class="white-text" id="footName">Swapr</h4>
+            <p class="grey-text text-lighten-4">More From the Contributors on GitHub</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text git-hub">GitHub</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/elthsu" target="_blank">Elton Hsu</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/njulius89" target="_blank">Nanette Julius</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/Forcium" target="_blank">Edward Yi</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/J373my1" target="_blank">Jeremy Awad</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2017 Copyright Swapr
+        </div>
+      </div>
+    </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <!-- profile Javascript-->
+    <script type="text/javascript" src="/assets/javascript/profile.js"></script>
+    <script type="text/javascript" src="/assets/javascript/listing.js"></script>
+</body>
+
+</html>

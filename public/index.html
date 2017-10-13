@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>swapr</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <!-- Meterialize icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Metrialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Scss compiled css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <!-- swal alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Modal for Login -->
+  <div id="modalLogin" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class="container">
+        <h4>Member Login</h4>
+        <form id="login">
+          <!-- users login input -->
+          <div class="col s12">
+            <div class="input-field clearfix" id="userLogin">
+              <input placeholder="Username" id="usernameLogin" type="text" class="validate">
+              <label for="username"></label>
+              </input>
+              <input placeholder="Password" id="passwordLogin" type="password" class="validate">
+              <label for="password"></label>
+              </input>
+            </div>
+          </div>
+      </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="/profile" class="modal-action modal-close waves-effect waves-green btn-flat" id="loginBtn">Login</a>
+    </div>
+  </div>
+  <!-- Modal for Signup -->
+  <div id="modalSignup" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class="container">
+        <h4>Member Signup</h4>
+        <form id="signup">
+          <!-- users signup input -->
+          <div class="row">
+            <div class="input-field" id="usersignUp">
+              <div class="col s6">
+                <input placeholder="First Name" id="firstName" type="text" class="validate">
+                <label for="firstName"></label>
+                </input>
+              </div>
+              <div class="col s6">
+                <input placeholder="Last Name" id="lastName" type="text" class="validate">
+                <label for="lastName"></label>
+                </input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field usersignUp">
+              <div class="col s6">
+                <input placeholder="Email" id="email" type="email" class="validate">
+                <label for="email"></label>
+                </input>
+              </div>
+              <div class="col s6">
+                <input placeholder="Phone" id="phone" type="text" class="validate">
+                <label for="phone"></label>
+                </input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field usersignUp">
+              <div class="col s6">
+                <input placeholder="City" id="city" type="text" class="validate">
+                <label for="city"></label>
+                </input>
+              </div>
+              <div class="col s2">
+                <input placeholder="State" id="state" type="text" class="validate">
+                <label for="state"></label>
+                </input>
+              </div>
+              <div class="col s4">
+                <input placeholder="Zipcode" id="zipcode" type="text" class="validate">
+                <label for="zipcode"></label>
+                </input>
+              </div>
+            </div>
+          </div>
+          <div class="col s12">
+            <input placeholder="Username" id="username" type="text" class="validate">
+            <label for="username"></label>
+            </input>
+            <input placeholder="Password (8 Characters)" id="password" type="password" class="validate">
+            <label for="password"></label>
+            </input>
+            <input placeholder="Confirm Password" id="password2" type="password" class="validate">
+            <label for="password2"></label>
+            </input>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="/profile" class="modal-action modal-close waves-effect waves-green btn-flat " id="signupBtn">SIGNUP</a>
+      <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+    </div>
+  </div>
+  <!-- navbar header -->
+  <div class="" id="naviPadding">
+    <nav>
+      <div class="nav-wrapper main grad1" id="navi">
+        <a href="/" class="brand-logo left">
+          <header>Swapr</header>
+        </a>
+        <ul id="nav-mobile" class="right LS">
+          <li><a class="modal-trigger" id="navLogin" href="#modalLogin">Login</a></li>
+          <li>|</li>
+          <li><a class="modal-trigger" id="navSignup" href="#modalSignup">Signup</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- parallax image 1 -->
+    <div class="parallax-container">
+      <div class="parallax">
+        <img id="parallax1" src="/assets/images/cameras.jpeg">
+      </div>
+    </div>
+    <!-- main container -->
+    <div class="container main" id ="search-stuff">
+      <!--user search-->
+      <div class="row yo">
+        <form id="search">
+          <!-- users search input -->
+          <div class="col l4 m6 s12">
+            <div class="input-field clearfix" id="userSearch">
+              <input placeholder="Search for something" id="searchText" type="text" class="validate">
+              <label for="searchText"></label>
+              </input>
+            </div>
+          </div>
+          <!-- category -->
+          <div class="input-field col l3 m6 s12">
+            <select name="itemCategory" id="stuffCat">
+              <option value="" disabled selected>Category</option>
+              <option value="Elect">Electronics</option>
+              <option value="Fash">Fashion</option>
+              <option value="HG">Home & Garden</option>
+              <option value="Music">Musical Instrument</option>
+              <option value="SG">Sporting Goods</option>
+              <option value="TH">Toys & Hobbies</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <!--location -->
+          <div class="col l3 m8 s9">
+            <div class="input-field clearfix" id="userSearch">
+              <input placeholder="Zipcode" name="searchZip" id="searchZip" type="text" class="validate">
+              <label for="searchZip"></label>
+              </input>
+            </div>
+          </div>
+          <div class="input-field col l1 m4 s3">
+            <select class = mileSearch>
+              <option value="" disabled selected>Miles</option>
+              <option value="5">5 mi</option>
+              <option value="15">15 mi</option>
+              <option value="20">20 mi</option>
+              <option value="30">30 mi</option>
+              <option value="50">50 mi</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col m8 s12">
+              <!-- submit btn -->
+              <button type="submit" class="waves-effect waves-light btn z-depth-5 grad1" id="submit-search" onclick="">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row" id="body_content">
+      </div>
+    </div>
+  </div>
+  <!-- main-->
+
+  <!-- footer with contributors info -->
+  <footer class="page-footer hide-on-small-only grad1">
+    <div class="container hide-on-med-and-down">
+      <div class="row">
+        <div class="col l6 s12">
+          <h4 class="white-text" id="footName">Swapr</h4>
+          <p class="grey-text text-lighten-4">More From the Contributors on GitHub</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text git-hub">GitHub</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/elthsu" target="_blank">Elton Hsu</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/njulius89" target="_blank">Nanette Julius</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/Forcium" target="_blank">Edward Yi</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/J373my1" target="_blank">Jeremy Awad</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Copyright Swapr
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  <!-- layout Javascript-->
+  <script type="text/javascript" src="/assets/javascript/index.js"></script>
+</body>
+
+</html>

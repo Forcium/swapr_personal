@@ -1,0 +1,34 @@
+//will import _styleListing.scss
+#itemTitle {
+  font-size: 35px;
+  text-align: center;
+}
+
+#itemDescription {
+  color: #666;
+  text-align: center;
+  background-color: #fafafa;
+  z-index: 0;
+  /*box-shadow: 4px 4px 5px #888888 ;*/
+}
+
+
+#carouselIMG, #carouselIMG2, #carouselIMG3  {
+	height: 400px;
+	width: 400px;
+
+}
+
+#accept, #decline {
+  z-index: 1;
+}
+
+#main {
+  z-index: 2;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#caroDiv{
+  padding-bottom: 300px;
+}

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>swapr</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <!-- Meterialize icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Meterialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- JQuery Forms -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js'></script>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <!-- Scss compiled css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <style>
+    body {
+      background-image: url('/assets/images/giftly.png');
+    }
+  </style>
+</head>
+
+<body>
+  <!-- swal alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- navbar header -->
+  <div class="" id="">
+    <nav>
+      <div class="nav-wrapper main grad1" id="navi">
+        <a href="/" class="brand-logo right">
+          <header>Swapr</header>
+        </a>
+        <form class="topInputBar">
+          <div class="input-field right-align hide-on-med-and-down" id="searchNav">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons center">close</i>
+
+          </div>
+        </form>
+      </div>
+    </nav>
+    <!--navbutton-->
+    <a href="#" data-activates="slide-out" class="button-collapse" id="menu"><i class="material-icons menu">menu</i></a>
+
+
+    <!--NAVBAR -->
+    <ul id="slide-out" class="side-nav">
+      <div class="user-view">
+        <div class="background grad1">
+        </div>
+        <img id="avatarImg" class="circle" src="">
+        <span class="white-text name"></span>
+        <span class="white-text email"></span>
+
+      </div>
+      <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+      <li><a class="waves-effect update" id="update"><i class="material-icons">mode_edit</i>Update Profile</a></li>
+      <li><a class="waves-effect" id="urStuff"><i class="material-icons">local_offer</i>Your Listings</a></li>
+      <li><a class="waves-effect" id="offer"><i class="material-icons">local_grocery_store</i>Offers Made</a></li>
+      <span class="collection-item" id="newSwapsTag"></span>
+      <li><a class="waves-effect" id="pend"><i class="material-icons">import_export</i>Pending Swaps</a></li>
+      <li><a class="waves-effect" id="exit"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    </ul>
+  </div>
+  </div>
+
+
+  <!-- Modal for Listing -->
+  <div id="modalListing" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class="container">
+        <h4>Add a Listing</h4>
+
+
+        <form class="listing" enctype="multipart/form-data" id="addListing" name="addListing" action="/api/addItem/" method="POST">
+          <!-- new listing info input -->
+          <div class="input-field col s12" id="newItem">
+            <input name="itemName" placeholder="Item Name" id="itemName" type="text" class="validate">
+            <label for="itemName"></label>
+            </input>
+          </div>
+          <!-- category -->
+          <div class="input-field col s12">
+            <select name="itemCategory">
+              <option value="" disabled selected>Category</option>
+              <option value="Elect">Electronics</option>
+              <option value="Fash">Fashion</option>
+              <option value="HG">Home & Garden</option>
+              <option value="Music">Musical Instrument</option>
+              <option value="SG">Sporting Goods</option>
+              <option value="TH">Toys & Hobbies</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="input-field col s12">
+            <textarea name="itemDescription" id="itemDescription" class="materialize-textarea"></textarea>
+            <label for="textarea1">Item Description</label>
+          </div>
+         <!--  <div class="input-field row col s12">
+            <input type="file" name="imgUploader" multiple />
+            <input type="submit" name="submit" id="btnSubmit" value="Upload" />
+
+          </div>-->
+          <input type="hidden" name="hdnId" id="hdnId" value=""></input>
+
+          <div class="file-field input-field">
+            <div class="btn light-green">
+              <span>File</span>
+              <input name="img1" type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate"  type="text" placeholder="Upload Images">
+            </div>
+          </div>
+
+          <div class="file-field input-field">
+            <div class="btn light-green">
+              <span>File</span>
+              <input name="img1" type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate"  type="text" placeholder="Upload Images">
+            </div>
+          </div>
+
+
+          <div class="file-field input-field">
+            <div class="btn light-green">
+              <span>File</span>
+              <input name="img1" type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate"  type="text" placeholder="Upload Images">
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+
+      <button type="submit" value="Update" form="addListing" class="modal-action modal-close waves-effect waves-green btn-flat " id="btnSubmit">Submit</button>
+
+
+    </div>
+  </div>
+
+  <!-- Modal for swapr Offers -->
+  <div id="modalBids" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Swapr Offers</h4>
+      <!-- offers populated -->
+      <div class="offersPopulate">
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+
+  <!-- main container -->
+  <div class="container main" id="profDivs">
+    <div class="row card-panel lighten-5">
+      <div class="col s8">
+        <h3 id="userWelcome"></h3>
+      </div>
+      <div class="col s4">
+        <a class="waves-effect waves-light btn grad1 modal-trigger" id="addListing" data-target="modalListing">
+      <i class="material-icons right">add</i>ADD A LISTING</a>
+      </div>
+    </div>
+
+
+    <!-- main profile page -->
+    <div class="" id="profileHome">
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="" id="homePageImg">
+              <span class="card-title card-paneltemp" id="homePageFirstName"></span>
+            </div>
+            <div class="card-action">
+              <p>Rating: </p>
+              <i class="material-icons">star</i></a>
+              <i class="material-icons">star</i></a>
+              <i class="material-icons">star</i></a>
+              <i class="material-icons">star</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m5">
+          <div class="card-panel infoStuff z-depth-4">
+            <h5 id="listingsActive"></h5>
+          </div>
+        </div>
+        <div class="col s12 m5">
+          <div class="card-panel infoStuff z-depth-4">
+            <h5 id="recentOffers"></h5>
+          </div>
+        </div>
+        <div class="col s12 m5">
+          <div class="card-panel infoStuff z-depth-4">
+            <h5 id="pendingSwapsHomePage"></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main -->
+
+    <!-- List of items -->
+    <div class="row card-panel z-depth-1" id="listOfItems">
+      <div class=" col s12">
+        <h4 class="darkText"> Listings</h4>
+      </div>
+
+      <div class="row" id="listingCards">
+      </div>
+    </div>
+    <!-- main -->
+
+    <!-- Offers You Made -->
+    <div class="row card-panel z-depth-1" id="stuffUwant">
+      <div class="col s12">
+        <h4 class="darkText"> Offers Made</h4>
+      </div>
+
+      <div class="row" id="offerMadeCards"></div>
+    </div>
+    <!-- main -->
+
+
+    <!-- Pending swaps -->
+
+    <div class="row card-panel z-depth-1" id="pendingSwaps">
+      <h4 class="darkText">Pending Swaps</h4>
+      <div id="pendingSwapsContent"></div>
+      <!-- pendings populated -->
+    </div>
+
+    <!-- main -->
+
+
+    <!-- update profile form-->
+    <div class="container grey lighten-5" id="changeProfile">
+      <form id="frUploader" class="listing" enctype="multipart/form-data" action="/api/Upload/" method="POST">
+        <div class="row">
+          <h4 class="darkText">Update Profile</h4>
+          <div class="input-field" id="usersignUp">
+            <div class="col s12 l6">
+              <input placeholder="firstName" name="firstName" id="firstName" type="text" class="validate">
+              <label for="firstName"></label>
+              </input>
+            </div>
+            <div class="col s12 l6">
+              <input placeholder="lastName" name="lastName" id="lastName" type="text" class="validate">
+              <label for="lastName"></label>
+              </input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field usersignUp">
+            <div class="col s12 l6">
+              <input placeholder="email" name="email" id="email" type="email" class="validate">
+              <label for="email"></label>
+              </input>
+            </div>
+            <div class="col s12 l6">
+              <input placeholder="phone" name="phone" id="phone" type="text" class="validate">
+              <label for="phone"></label>
+              </input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field usersignUp">
+            <div class="col s12 m6">
+              <input placeholder="city" name="city" id="city" type="text" class="validate">
+              <label for="city"></label>
+              </input>
+            </div>
+            <div class="col s4 m2">
+              <input placeholder="state" name="state" id="state" type="text" class="validate">
+              <label for="state"></label>
+              </input>
+            </div>
+            <div class="col s8 m4">
+              <input placeholder="Zipcode" id="zipcode" type="text" class="validate">
+              <label for="zipcode"></label>
+              </input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field">
+            <div class="col s12 l6">
+              <input placeholder="username" name="username" id="username" type="text" class="validate">
+              <label for="username"></label>
+              </input>
+            </div>
+            <div class="col s12 l6">
+              <input placeholder="New Password" name="password" id="password" type="password" class="validate">
+              <label for="password"></label>
+              </input>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row"> -->
+          <div class="col s12 m6">
+            <div class="file-field input-field">
+              <div class="btn light-green filebtnStyle">
+                <span>File</span>
+                <input type="file" name="imgUploader">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="  Upload Profile Picture">
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <input type="hidden" id="hdnTkn" name="hdnTkn" value=""></input>
+            <input type="hidden" id="passwordHdn" name="passwordHdn" value=""></input>
+            <input type="hidden" id="avatarHdn" name="avatarHdn" value=""></input>
+            <button type="submit" value="Update" class="waves-effect waves-light grad1 right btn modal-trigger" id="frmUploader">UPDATE</button>
+            <button type="submit" value="Delete" class="waves-effect waves-red red-text btn-flat modal-trigger" id="deleteAcct">DELETE ACCOUNT</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- main -->
+
+
+    <!-- footer with contributors info -->
+  <footer class="page-footer hide-on-small-only grad1">
+    <div class="container hide-on-med-and-down">
+      <div class="row">
+        <div class="col l6 s12">
+          <h4 class="white-text" id="footName">Swapr</h4>
+          <p class="grey-text text-lighten-4">More From the Contributors on GitHub</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text git-hub">GitHub</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/elthsu" target="_blank">Elton Hsu</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/njulius89" target="_blank">Nanette Julius</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/Forcium" target="_blank">Edward Yi</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/J373my1" target="_blank">Jeremy Awad</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Copyright Swapr
+      </div>
+    </div>
+  </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <!-- profile Javascript-->
+    <script type="text/javascript" src="/assets/javascript/profile.js"></script>
+
+</body>
+
+</html>

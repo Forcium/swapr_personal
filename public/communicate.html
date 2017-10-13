@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>swapr</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBopkQwI_TU57Edl3DChXdNCYXXmufT0gg&libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <!-- google maps Javascript files-->
+  <script src="/assets/javascript/store-locator.min.js"></script>
+  <script src="/assets/javascript/places.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <!-- Meterialize icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Meterialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <!-- Scss compiled css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <style>
+  body {
+    background-image: url('/assets/images/giftly.png');
+  }
+  /*.container{
+      margin: 0;
+      padding:40px;
+    }*/
+  </style>
+</head>
+
+<body>
+  <!-- navbar header -->
+  <div class="" id="">
+    <nav>
+      <div class="nav-wrapper grad1" id="navi">
+        <a href="/" class="brand-logo right">
+          <header>Swapr</header>
+        </a>
+        <form class="topInputBar">
+          <div class="input-field right-align hide-on-med-and-down" id="searchNav">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons center">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <!--navbutton-->
+    <a href="#" data-activates="slide-out" class="button-collapse" id="menu"><i class="material-icons menu">menu</i></a>
+    <!--NAVBAR -->
+    <ul id="slide-out" class="side-nav">
+      <div class="user-view">
+        <div class="background grad1">
+        </div>
+        <img id="avatarImg" class="circle" src="">
+        <span class="white-text name"></span>
+        <span class="white-text email"></span>
+      </div>
+      <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+      <li><a class="waves-effect" href="/profile"><i class="material-icons">face</i>Your Profile</a></li>
+      <li><a class="waves-effect" id="exit"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Communicate images-->
+  <div class="container" id="comDiv">
+    <div class="row card-panel grey lighten-5">
+      <div class="col s12 swapDiv">
+        <h3 class="center-align swap">Swap</h3>
+        <h5 class="center-align swap" id="transNumber"></h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col l6 s12">
+        <div class="row">
+          <div class="col l6" id="imageCardYou">
+            <div class="card">
+              <div class="card-image it">
+                <img id="yourItemC" class="responsive-img" src="/assets/images/placeholder.png">
+              </div>
+              <div class="card-action" id="nameOfCard">
+                <h6 id="yourItem"></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col l6" id="imageCardThem">
+            <div class="card">
+              <div class="card-image it">
+                <img id="otherItemC" class="responsive-img" src="/assets/images/placeholder.png">
+              </div>
+              <div class="card-action" id="nameOfCard">
+                <h6 id="otherItem"></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col l12 s12">
+            <!-- <h4>Swap Spot</h4>  -->
+              <div id="map-canvas"></div>
+              <div id="panel"></div>
+          </div>
+        </div>
+      </div>
+      <!-- messenger -->
+      <div class="col l6 s12" id="mess">
+        <div class="panel card-content z-depth-1" id="Convos">
+          <div class="panel-heading">
+            <h4 class="panel-title center-align"><strong>Messages</strong></h4>
+          </div>
+          <div class="panel-body">
+            <table class="table table-hover" id='msg-table'>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Add message  -->
+        <div class="panel card-content z-depth-1" id="ConvosWrite">
+          <div class="panel-heading">
+            <h4 class="panel-title center-align"><strong>Write a message</strong></h4>
+          </div>
+          <div class="panel-body">
+            <!-- Entry Form -->
+            <form>
+              <!-- <div class="form-group">
+                  <label for="user-name-input">Name</label>
+                  <input type="text" class="form-control" id="user-name-input">
+                </div> -->
+              <div class="form-group">
+                <label for="message-input">Message</label>
+                <textarea type="form" class="form-control" id="message-input"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary grey" id="add-msg-btn">Submit</button>
+            </form>
+          </div>
+        </div>
+        <!-- panel add message -->
+      </div>
+      <!-- panel -->
+    </div>
+    <!-- row -->
+  </div>
+  <!-- container -->
+
+
+  <!-- <div class="container row" id="communicateChat">
+      <form id="listing" enctype="multipart/form-data" action="api/Upload/" method="post">
+        <div class="input-field">
+          <div class="input-field col m6 s12">
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1">Contact Swapr</label>
+            <a class="waves-effect waves-light light-green btn modal-trigger" id="sendChat" data-target="modalListing">
+          <i class="material-icons right">mail_outline</i>Send</a>
+          </div>
+          <div class="col m6 s12">
+            <img class="responsive-img" id="maps" src="/assets/images/google.jpg">
+          </div>
+      </form>
+    </div>
+  </div> -->
+
+  <!-- footer with contributors info -->
+  <footer class="page-footer hide-on-small-only grad1">
+    <div class="container hide-on-med-and-down">
+      <div class="row">
+        <div class="col l6 s12">
+          <h4 class="white-text" id="footName">Swapr</h4>
+          <p class="grey-text text-lighten-4">More From the Contributors on GitHub</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text git-hub">GitHub</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/elthsu" target="_blank">Elton Hsu</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/njulius89" target="_blank">Nanette Julius</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/Forcium" target="_blank">Edward Yi</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/J373my1" target="_blank">Jeremy Awad</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Copyright Swapr
+      </div>
+    </div>
+  </footer>
+  <!-- main -->
+  <script src="/assets/javascript/chat.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  <!-- profile & chat Javascript-->
+  <script type="text/javascript" src="/assets/javascript/profile.js"></script>
+</body>
+
+</html>
